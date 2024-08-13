@@ -8,6 +8,7 @@ def solution(n, times):
     while start <= end:
         mid = (start + end) // 2
         count = 0
+        times.sort() 
         for i in times: 
             count += (mid // i)
         if count >= n: # 더 많은 사람을 받을 수 있음, 시간 줄이자
