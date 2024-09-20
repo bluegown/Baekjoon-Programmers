@@ -1,5 +1,16 @@
 import sys
+def binary_search(elem,b):
+    global count
+    start = 0
+    end = M-1
 
+    while start <= end:
+        mid = (start + end) // 2
+        if b[mid] >= elem:
+            end = mid - 1
+        elif b[mid] < elem:
+            start = mid + 1
+    count += start
 
     
 T = int(input())
@@ -12,8 +23,6 @@ for _ in range(T):
     b.sort()
     count = 0
     for i in a:
-        for j in b:
-            if i > j:
-                count += 1
+        binary_search(i,b)
     print(count)
 
