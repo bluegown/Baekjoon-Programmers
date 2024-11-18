@@ -2,35 +2,28 @@ import sys
 
 T = int(input())
 
-
-
 for _ in range(T):
-    arr = list(sys.stdin.readline().rstrip())
-    number = len(arr)
-    index = -1
-    count = 0
-
-    
-  
-        
-
-    for i in range(number):
+    arr = list(input())
+    x = []
+    stop = 0
+    for i in range(len(arr)):
         if arr[i] == '(':
-            count += 1
-        if arr[i] == ')':
-            count -=1
-        if count < 0:
-            break
+            x.append('(')
+        else:
+            if len(x) == 0:
+                stop = 1
+                break
+            x.pop()
 
-            
- 
-   
-    if count == 0:
-        print("YES")
-    else:
+    if stop == 1 or len(x)!=0:
         print("NO")
-
-            
-                
-               
+    elif len(x) == 0:
+        print("YES")
     
+   
+
+
+
+    
+
+
