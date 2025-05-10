@@ -1,7 +1,2 @@
 def solution(cipher, code):
-    answer = ''
-    for i in range(1,len(cipher) + 1):
-        if (code * i) - 1 >= len(cipher):
-            break
-        answer += cipher[(code * i) - 1]
-    return answer
+    return cipher[code-1::code] # 시작인덱스 , 끝인덱스(정의안해도됨) , 점프할 수
