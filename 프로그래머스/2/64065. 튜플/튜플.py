@@ -1,10 +1,3 @@
-def changeToDigit(arr):
-    x = []
-    for i in range(len(arr)):
-        x.append(int(arr[i]))
-    
-    return x
-
 def solution(s):
     answer = []
     x = []
