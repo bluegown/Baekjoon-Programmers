@@ -1,24 +1,15 @@
 def solution(s):
-    answer = []
-    x = []
     
-    for i in range(1,len(s)):
-        index = i
-        count = 0
-        if s[i] == '{':
-            while True:
-                if s[index] == '}':
-                    break
-                index += 1
-            arr = s[i+1:index].split(',')
-            x.append(arr)
-            
-    x = sorted(x, key = len)
-    for i in range(len(x)):
-        for j in range(len(x[i])):
-            if int(x[i][j]) not in set(answer):
-                answer.append(int(x[i][j]))
+    answer = {}
+    s = sorted(s[2:-2].split('},{'),key = len)
+    
+    for tuples in s:
+        elements = tuples.split(',')
+        for element in elements:
+            number = int(element)
+            if number not in answer:
+                answer[number] = 1
     
 
 
-    return answer
+    return list(answer)
