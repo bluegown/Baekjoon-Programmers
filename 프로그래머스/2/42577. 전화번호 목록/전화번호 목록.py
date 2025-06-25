@@ -1,9 +1,17 @@
 def solution(phone_book):
     answer = True
-    phone_book.sort()
-    for i in range(len(phone_book)-1):
-        if phone_book[i] == phone_book[i+1][0:len(phone_book[i])]:
-            answer = False
-            return answer
+    book_dict = set()
+    for i in phone_book:
+        book_dict.add(i)
+    
+    for i in phone_book:
+        string = ''
+        for j in i:
+            string += j
+            if string in book_dict and string!=i: # 접두어인 경우, 완전같으면 안됨
+                return False
 
-    return answer
+    
+    
+    
+    return True
