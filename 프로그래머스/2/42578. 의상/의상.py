@@ -1,15 +1,12 @@
-
 def solution(clothes):
-    answer = 0
-    info = {}
-    for i in range(len(clothes)):
-        info[clothes[i][1]] = 0
+    answer = 1
+    dic = dict()
     
-    for i in range(len(clothes)):
-        info[clothes[i][1]] += 1
-    
-    num = 1
-    for key,value in info.items():
-        num = num * (value + 1)
+    for item , category in clothes:
+        dic[category] = dic.get(category,0) + 1
 
-    return num - 1
+    for key, value in dic.items():
+        answer = answer * (value + 1)
+
+    
+    return answer - 1
