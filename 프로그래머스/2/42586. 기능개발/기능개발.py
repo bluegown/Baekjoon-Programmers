@@ -1,28 +1,37 @@
-
-
-
 def solution(progresses, speeds):
     answer = []
-    for i in range(len(progresses)):
-        period = (100 - progresses[i]) // speeds[i]
-        if (100 - progresses[i]) % speeds[i] !=0:
-            period +=1
-        answer.append(period) # 각각 걸리는 기간만큼을 넣어줌
-    ans = []
-    print(answer)
+    # 7, 3 ,9 니까 
+    # 7 
+    # 앞에가 7일이 걸리는데, 내가 지금 3일이 걸리네 ! -> 뒤에꺼도 7로 통일됨
+    # 위는 maxValue > day인 경우
+    # 처리불가. continue
+    # 앞에가 7일이 걸리는데, 뒤에는 9일이 걸려 ! -> 이제 처리할 수 있겠다ㅏㅏ
+    # 위는 maxValue < day인 경우. 
+    # 이때 append(count)
+    
+    maxValue = (100 - progresses[0]) // speeds[0]
+    if (100 - progresses[0]) % speeds[0] != 0:
+        maxValue += 1
+    count = 1
+    # maxValue < day면 처리 가능함 count += 1
+    for i in range(1,len(progresses)):
+        day = (100 - progresses[i]) // speeds[i] # 각 소요되는 날짜에 대한 배열
+        if (100 - progresses[i]) % speeds[i] != 0:
+            day += 1
+        if maxValue < day: # 10 > 1이니까 처리 가능함
+            answer.append(count)
+            maxValue = day
+            count = 1
+        else: # 10 
+            count += 1
 
-    count = 0
-    elem = answer[0]
-    while answer:
-        v  = answer.pop(0) # 맨 아래꺼 꺼내고
-        if v <= elem: # 만약 꺼낸게 v보다 크다면
-                count +=1
-        else:
-                ans.append(count)
-                elem = v
-                count = 1 # 첫번째는 무조건이니깐
-    ans.append(count)
         
         
-    return ans
+            
+            
+    if count != 0:
+        answer.append(count)
+            
         
+        
+    return answer
