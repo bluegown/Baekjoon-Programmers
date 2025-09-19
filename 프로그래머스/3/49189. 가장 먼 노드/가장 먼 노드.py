@@ -10,14 +10,13 @@ def solution(n, edge):
         graph[y].append(x)
     
     queue.append(1) # 시작점 넣기
+    distance[1] = 1
     while queue:
         now = queue.popleft() # 큐에서 값을 꺼낸다
-        visited[now] = True
         for i in graph[now]:
-            if visited[i] == False:
+            if distance[i] == 0:
                 queue.append(i)
-                visited[i] = True
                 distance[i] = distance[now] + 1
-
+    print(distance)
     
     return distance.count(max(distance))
