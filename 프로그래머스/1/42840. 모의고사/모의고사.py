@@ -1,9 +1,7 @@
 def solution(answers):
     answer = []
     ans = [[1,2,3,4,5],[2,1,2,3,2,4,2,5],[3,3,1,1,2,2,4,4,5,5]]
-
     score = [0,0,0]
-    
     for index, value in enumerate(answers):
         if value == ans[0][index % len(ans[0])]:
             score[0] += 1
@@ -13,8 +11,7 @@ def solution(answers):
             score[2] += 1
     
     for index, value in enumerate(score):
-        if value == max(score):
+        if max(score) == value:
             answer.append(index + 1)
-    
-    
+        
     return answer
