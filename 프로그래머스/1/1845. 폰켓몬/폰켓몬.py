@@ -1,11 +1,14 @@
 def solution(nums):
     answer = 0
-    arr = set(nums)
-    maxlen = len(nums) // 2
-    if maxlen == len(arr):
-        return maxlen
-    if maxlen < len(arr):
-        return maxlen
+    
+    num = len(nums) // 2 # max로 가질수 있는 숫자
+    ans = set(nums)
+    if len(ans) <= num:
+        return len(ans)
     else:
-        return len(arr)
-    return maxlen
+        return len(nums) // 2
+    
+
+
+
+    return answer
