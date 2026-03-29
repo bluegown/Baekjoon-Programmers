@@ -1,32 +1,24 @@
 import sys
 from collections import deque
-def bfs(graph,visited):
-    visited[1] = True
-    queue = deque()
-    queue.append(1)
-    count = 0
-
+def bfs(graph, start, visited):
+    visited[start] = True
+    queue = deque([start])
 
     while queue:
-        pop = queue.popleft() # 큐에서 빼낸 원소
-        for i in graph[pop]:
+        v = queue.popleft()
+        for i in graph[v]:
             if not visited[i]:
-                queue.append(i)
-                count += 1
                 visited[i] = True
-
-    return count
+                queue.append(i)
 
 N = int(input())
-i = int(input())
-
+M = int(input())
 graph = [[] for _ in range(N+1)]
-
-
+for _ in range(M):
+    a,b = map(int,input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+answer = 0
 visited = [False] * (N+1)
-for _ in range(i):
-    x,y = map(int,sys.stdin.readline().split())
-    graph[x].append(y)
-    graph[y].append(x)
-
-print(bfs(graph,visited))
+bfs(graph,1,visited)
+print(visited.count(True) - 1)
