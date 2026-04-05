@@ -1,15 +1,14 @@
 def solution(sizes):
     answer = 0
+    
     for i in range(len(sizes)):
         if sizes[i][0] > sizes[i][1]:
-            sizes[i][0],sizes[i][1] = sizes[i][1],sizes[i][0]
+            sizes[i][0],sizes[i][1] = sizes[i][1], sizes[i][0]
+    x = max(x[0] for x in sizes)
+    y = max(x[1] for x in sizes)
 
-    maxX = 0
-    maxY = 0
-    for i in range(len(sizes)):
-        if sizes[i][0] > maxX:
-            maxX = sizes[i][0]
-        if sizes[i][1] > maxY:
-            maxY = sizes[i][1]
-        
-    return maxX * maxY
+
+    
+                
+                
+    return x * y
