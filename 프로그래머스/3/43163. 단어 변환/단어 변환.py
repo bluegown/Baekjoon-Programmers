@@ -1,30 +1,21 @@
 from collections import deque
-def TrueorFalse(now,next,words):
-    count = 0
-    for i in range(len(now)):
-        if now[i] == next[i]:
-            count += 1
-    if count == len(now) - 1:
-        return True
-    else:
-        return False
-                
+
 def solution(begin, target, words):
     answer = 0
+    if target not in words:
+        return 0
     queue = deque()
-    queue.append(begin)
-    info = {}
-    info[begin] = 0
-    
+    queue.append((begin, 0))
     while queue:
-        v = queue.popleft()
-        for i in words:
-            if TrueorFalse(v,i,words) == True and i not in info:
-                info[i] = info[v] + 1
-                queue.append(i)
-
-
-    if target in info:
-       return info[target]
-    else:
-       return 0
+        element, answer = queue.popleft()
+        if element == target:
+            return answer
+        for i in range(len(words)):
+            count = 0
+            for j in range(len(words[0])):
+                if element[j] == words[i][j]:
+                    count += 1
+            if count == len(words[0]) - 1:
+                queue.append((words[i],answer + 1))
+            
+    return answer
