@@ -1,11 +1,15 @@
 def solution(s):
-    s_low = s.lower()
-    arr = list(s_low.split(' '))
-    for i in range(len(arr)):
-            if arr[i] == '':
-                continue
-            if arr[i][0].isalpha():
-                arr[i] = arr[i][0].upper() + arr[i][1:].lower()
-
+    answer = ''
+    s = s.lower()
+    s = s.split(' ')
+    for i in range(len(s)):
+        if s[i] == "":
+            continue
+        if s[i][0].isalpha():
+            s[i] = s[i][0].upper() + s[i][1:]
     
-    return ' '.join(arr)
+
+            
+            
+    
+    return ' '.join(s)
