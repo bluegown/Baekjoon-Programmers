@@ -1,25 +1,22 @@
-def radixtoChange(num,radix):
-    if num == 0:
-        return '0'
-    
-    nums = []
-    while num:
-        num, digit = divmod(num,radix)
-        nums.append(str(digit))
-    
-    return ''.join(reversed(nums))
+def change_to_digit(n):
+    st = ""
+    while n > 0:
+        st += str(n % 2)
+        n = n // 2
 
+    return ''.join(st)
 def solution(s):
     answer = []
     count = 0
-    exection = 0
-    deleted = 0
-    while s != '1':
-        exection += 1 
-        count = 0
-        for i in s:
-            if i == '1':
-                count += 1
-        deleted += len(s) - count
-        s = radixtoChange(count,2)
-    return [exection,deleted]
+    removedZero = 0
+    print(s.count("0"))
+    while s!= "1":
+        length = len(s) - s.count("0") # 0 제거후 길이
+        removedZero += s.count("0")
+        s = change_to_digit(length)
+        count += 1
+        
+        
+        
+        
+    return [count, removedZero]
