@@ -1,5 +1,5 @@
 def solution(strings, n):
+    answer = []
     strings.sort()
-    answer = sorted(strings, key = lambda x : x[n])
-    
-    return answer
+    strings = sorted(strings, key = lambda x: x[n])
+    return strings
