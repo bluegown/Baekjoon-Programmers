@@ -1,37 +1,39 @@
 def solution(new_id):
     answer = ''
-    new_id = new_id.lower()
-    # 1단계 문제 없음 
     
-    second_id = []
-    for i in range(len(new_id)):
-        if 'a' <= new_id[i] <='z' or new_id[i] in {'-','_','.'} or '0' <= new_id[i] <= '9': # 문자 충족한 경우
-            second_id.append(new_id[i])
-        else: # 제거
-            continue
-    second_id = ''.join(second_id)
+    new_id = new_id.lower() # 1단계
+    print("1단계 " + new_id)
     
-    while '..' in second_id: #3단계
-        second_id = second_id.replace('..','.') # 연속된 마침표가 전부 치환될때까지 진행
+    new_id2 = []
+    for i in new_id:
+        if i.isalpha() or i in {'-','_','.'} or i.isdigit():
+            new_id2.append(i)
+    new_id2 = ''.join(new_id2)
+    print("2단계 " + new_id2)
+    
+    while '..' in new_id2:
+        new_id2 = new_id2.replace('..','.')
+    
+    print("3단계 " + new_id2)
+    
+    new_id2 = new_id2.strip('.')
+    print("4단계 " + new_id2)
+    if len(new_id2) == 0:
+        new_id2 += 'a'
+    print("5단계 " + new_id2)
+    
+    if len(new_id2) >= 16:
+        new_id2 = new_id2[0:15]
+        new_id2 = new_id2.strip('.')
+    print("6단계 " + new_id2)
+    # 0자라면 3번, 1자라면 2번, 2자라면 1번
+    if len(new_id2) <= 2:
+        string = new_id2[-1] * (3 - len(new_id2))
+        new_id2 += string
+    print("7단계 " + new_id2)
         
-
-    second_id = second_id.strip('.')
-    
-    second_id = list(second_id) 
-    
-    if len(second_id) == 0: # 5단계
-        second_id.append('a') 
-        
-    if len(second_id) >= 16: # 6단계
-        second_id = second_id[0:15] # 0~ 14까지 생존
-        if second_id[-1] == '.':
-            second_id.pop()
-        
-    value = second_id[-1]
-    if len(second_id) <= 2: # 7단계
-        while len(second_id) < 3:
-            second_id.append(value)
-    
         
     
-    return ''.join(second_id)
+    
+    
+    return new_id2
