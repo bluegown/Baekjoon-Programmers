@@ -1,65 +1,67 @@
 def chkoutIndex(nx , ny):
-    if nx < 0 or ny < 0 or nx >= N or ny >= M:
+    if nx < 0 or ny < 0 or nx >= rows or ny >= cols:
         return True
     return False
 def solution(park, routes):
     answer = []
-    for i in range(len(park)):
-        for j in range(len(park[0])):
+    global rows #row 는 세로 
+    global cols  #col은 가로
+    rows = len(park)
+    cols = len(park[0]) 
+    for i in range(rows):
+        for j in range(cols):
             if park[i][j] == 'S':
-                x, y = i,j # 시작점 설정하기
+                row, col  = i,j # 시작점 설정하기
 
-    global N
-    global M
-    N = len(park)
-    M = len(park[0]) 
+
 
     for i in routes:
         direction, move =  i.split()
         move = int(move)
         chk = True
-        nx, ny = x , y
+        next_row = row
+        next_col = col
         if direction == 'E': # 동쪽
-            ny = y + move
-            if chkoutIndex(x, ny) == True:
+            next_col = col + move
+            if chkoutIndex(row, next_col) == True:
                 chk = False
                 continue
-            for j in range(y, ny + 1):
-                if park[x][j] == 'X':
+            for j in range(col, next_col + 1):
+                if park[row][j] == 'X':
                     chk = False
                     break
         elif direction == 'S':
-            nx = x + move
-            if chkoutIndex(nx, y) == True:
+            next_row = row + move
+            if chkoutIndex(next_row, col) == True:
                 chk = False
                 continue
-            for j in range(x, nx + 1):
-                if park[j][y] == 'X':
+            for j in range(row, next_row + 1):
+                if park[j][col] == 'X':
                     chk = False
                     break
         elif direction == 'W':
-            ny = y - move
-            if chkoutIndex(x, ny ) == True:
+            next_col = col - move
+            if chkoutIndex(row,next_col ) == True:
                 chk = False
                 continue
-            for j in range(ny , y + 1):
-                if park[x][j] == 'X':
+            for j in range(next_col , col + 1):
+                if park[row][j] == 'X':
                     chk = False
                     break
         else:
-            nx = x - move
-            if chkoutIndex(nx, y) == True:
+            next_row = row - move
+            if chkoutIndex(next_row, col) == True:
                 chk = False
                 continue
-            for j in range(nx, x + 1):
-                if park[j][y] == 'X':
+            for j in range(next_row, row + 1):
+                if park[j][col] == 'X':
                     chk = False
                     break
         if chk == False:
             continue
-        x = nx
-        y = ny
-    return [x,y]
+        col = next_col
+        row = next_row
+    return [row,col]
             
         
     
