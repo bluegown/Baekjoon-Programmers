@@ -1,10 +1,10 @@
 # [level 1] [카카오 인턴] 키패드 누르기 - 67256 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/67256?language=python3) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/67256) 
 
 ### 성능 요약
 
-메모리: 9.35 MB, 시간: 0.30 ms
+메모리: 9.21 MB, 시간: 0.44 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 11월 30일 16:54:33
+2026년 05월 17일 22:42:37
 
 ### 문제 설명
 
