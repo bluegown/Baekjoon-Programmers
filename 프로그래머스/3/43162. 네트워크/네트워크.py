@@ -1,26 +1,30 @@
 from collections import deque
-def bfs(computers, visited , start):
-    if visited[start] == True:
-        return 0 # false면 순회돌 필요 없지
+def bfs(graph, start, visited):
     visited[start] = True
+    
     queue = deque()
     queue.append(start)
-    
     while queue:
-        elem = queue.popleft()
-        for i in range(len(computers)):
-            if visited[i] == False:
-                if start!= i and computers[elem][i] == 1:
-                    queue.append(i)
-                    visited[i] = True    
-    return True
+        v = queue.popleft()
+        for i in graph[v]:
+            if not visited[i]:
+                queue.append(i)
+                visited[i] = True
+        
+
 def solution(n, computers):
     answer = 0
-    visited = [False]  * (n)
-    # 1번부터 시작해서 visited가 false면 돌려돌려
+    graph = [[] for _ in range(n+1)]
     
-    for i in range(n):
-        if bfs(computers,visited,i) == True:
+    for i in range(len(computers)):
+        for j in range(len(computers)):
+            if computers[i][j] == 1 and i!=j:
+                graph[i+1].append(j+1)
+    visited = [False] * (n+1)
+    for i in range(1, n + 1):
+        if not visited[i]:
+            bfs(graph, i, visited)
             answer += 1
-        
+    
+    
     return answer
