@@ -1,24 +1,29 @@
 from collections import deque
-def solution(maps):
-    answer = 0
-    
+def bfs(graph):
+    queue = deque()
+    queue.append((0,0)) # 초기 시작점 넣는다.
     dx = [-1,0,1,0]
     dy = [0,1,0,-1]
-    # Maps[x][y] == 1인 경우만 통과가능
-    queue = deque()
-    queue.append((0,0))
-    N = len(maps)
-    M = len(maps[0])
+    
     while queue:
         x,y = queue.popleft()
         for i in range(4):
-            nx = x + dx[i] 
+            nx = x + dx[i]
             ny = y + dy[i]
-            if nx < 0 or ny < 0 or nx >= N or ny >= M:
+            if nx < 0 or ny < 0 or nx >= len(graph) or ny >= len(graph[0]):
                 continue
-            if maps[nx][ny] == 1: # 통행 가능한 경우
+            if graph[nx][ny] == 0:
+                continue
+            if graph[nx][ny] == 1:
+                graph[nx][ny] = graph[x][y] + 1
                 queue.append((nx,ny))
-                maps[nx][ny] = maps[x][y] + 1
-    if maps[N-1][M-1] <= 1:
+        
+def solution(maps):
+    answer = 0
+    graph = maps
+    bfs(graph)
+    print(graph)
+    if graph[-1][-1] == 1:
         return -1
-    return maps[N-1][M-1]
+    
+    return graph[-1][-1]
