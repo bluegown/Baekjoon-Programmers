@@ -26,5 +26,5 @@ def solution(N, road, K):
     dijkstra(1 , distance, graph)
     for i in distance:
         if i <= K:
-            answer += 1
+            answer += 1 
     return answer
