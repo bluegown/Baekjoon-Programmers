@@ -8,7 +8,7 @@ def solution(n, results):
         graph[x-1][y-1] = 1
         graph[y-1][x-1] = -1
     
-    
+     
     for k in range(n):
         for i in range(n):
             for j in range(n):
