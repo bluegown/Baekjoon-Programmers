@@ -8,7 +8,7 @@ def solution(n, edge):
         graph[b].append(a)
     dist = [0] * (n+1)
     
-    queue = deque()
+    queue = deque() 
     queue.append(1)
     dist[1] = 1
     while queue:
