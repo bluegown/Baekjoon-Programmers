@@ -1,24 +1,22 @@
 from itertools import permutations
-def is_prime(x,primelist):
-    if x < 2:
+def is_prime (num):
+    if num < 2:
         return False
-    if x in primelist:
-        return False
-    for i in range(2, int(x**0.5) + 1):
-        if x % i == 0:
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
             return False
     return True
-
 def solution(numbers):
     answer = 0
-    numbers = list(numbers)
-    arr = []
-    primelist = []
+    p = set()
     for i in range(1,len(numbers) + 1):
-        perList = list(set(map(''.join,permutations(numbers,i))))
-        for i in perList:
-            if is_prime(int(i),primelist) == True:
-                primelist.append(int(i))
-                answer += 1
-                
+        prime = list(set(permutations(numbers, i)))
+        print(prime)
+        for num in prime:
+            prime_number = int(''.join(num[:]))
+            if is_prime(prime_number):
+                if prime_number not in p:
+                    p.add(prime_number)  
+                    answer += 1
+                     
     return answer
