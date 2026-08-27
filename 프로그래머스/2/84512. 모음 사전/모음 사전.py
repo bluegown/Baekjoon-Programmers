@@ -1,13 +1,16 @@
-def makeWord(ans , value, length):
+def make_word(now, ans):
+    if len(now) == 5:
+        return False
     arr = ['A','E','I','O','U']
-    if length == 6:
-        return 
-    if value != '':
-        ans.append(value)
     for i in arr:
-        makeWord(ans,''.join([value,i]),length + 1)
+        ans.append(now + i)
+        make_word(now + i, ans)
+    
+        
 def solution(word):
-    answer = 0
-    ans = []
-    makeWord(ans,'',0)
-    return ans.index(word) + 1
+    answer = []
+    arr = ['A','E','I','O','U']
+    for i in arr:
+        answer.append(i)
+        make_word(i, answer)
+    return answer.index(word) + 1

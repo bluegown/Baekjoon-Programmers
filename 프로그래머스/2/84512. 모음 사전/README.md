@@ -1,10 +1,10 @@
 # [level 2] 모음 사전 - 84512 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/84512) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/84512?gad_source=1&gad_campaignid=22356298761&gbraid=0AAAAAC_c4nDDQ-yf4VWVNu8Wt0ZSbqnZ1&gclid=CjwKCAjwwL_UBhAjEiwAEhuT5J2HRGJB5lmGKPAuueeMCJuCs1_zfd-u5pqTAsM1YigzA_b_PQNiKRoCIXQQAvD_BwE) 
 
 ### 성능 요약
 
-메모리: 9.18 MB, 시간: 11.03 ms
+메모리: 11.4 MB, 시간: 0.71 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 10월 30일 23:16:23
+2026년 08월 27일 23:56:20
 
 ### 문제 설명
 
