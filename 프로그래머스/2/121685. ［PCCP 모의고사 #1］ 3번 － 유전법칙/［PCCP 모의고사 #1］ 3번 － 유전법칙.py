@@ -1,24 +1,24 @@
-# 23:10 풀이 시작
-def find(gen, srno):
+def find_parent(gen, index):
     if gen == 1:
-        return 'Rr' # 1세대라면 Rr 반환
+        return 'Rr' # 1세대는 Rr로 고정인듯 하네
+    # 만약 (3,5)를 찾고싶다면.. 
+    # (3,5) -> (2,1) -> (1,0)
     
-    parent = find(gen - 1, (srno - 1) // 4 + 1) # 부모를 찾는다! 9~ 13이면 3번째가 부모임.
+    parent = find_parent(gen -1 , (index - 1) // 4 + 1)
     if parent == 'RR' or parent == 'rr':
-        return parent # 부모가 이거면 나머지도 전부 같기에 더이상 호출할 필요가 없음
-    # 그 아래까지 내려왔다면 'Rr'인 경우
-    if srno % 4 == 1:
+        return parent
+    if index % 4 == 1:
         return 'RR'
-    elif srno % 4 == 0:
+    elif index % 4 == 0:
         return 'rr'
     else:
         return 'Rr'
-    
-    
+    # 아니면 부모가 'Rr' 이라는 소리니까.
+        
+        # 여기서는 'RR' 아니면 'rr'
 def solution(queries):
     answer = []
+    # 4^(n-1)에 16승 하면 무조건 터진다. 절대 완전한 모든것을 만들수 없음
     for n,p in queries:
-        answer.append(find(n,p))
-            
-            
+        answer.append(find_parent(n,p))
     return answer
