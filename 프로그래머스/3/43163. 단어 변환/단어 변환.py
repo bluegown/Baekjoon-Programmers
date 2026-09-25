@@ -1,37 +1,24 @@
 from collections import deque
-def compare(a,b):
-    count = 0
-    for i in range(len(a)):
-        if a[i] != b[i]:
-            count += 1
-        if count > 2:
-            return False
-    if count == 1:
-        return True
-    else:
-        return False
 def solution(begin, target, words):
     answer = 0
     if target not in words:
-        return 0 # 반환할 수 없는 경우
-    visited = dict()
-    for i in words:
-        visited[i] = 1
-    visited[begin] = 1
+        return 0
     queue = deque()
     queue.append((begin, 0))
-    
-    
+    used_words = set()
+    used_words.add(begin)
+    n = len(begin)
     while queue:
-        v, count = queue.popleft()
+        v, cnt = queue.popleft()
         if v == target:
-            break
-        visited[v] = 0
-        count += 1
-        for i in words:
-            if visited[i] == 1 and compare(v, i) == True:
-                queue.append((i, count))
-                
+            return cnt
+        for word in words:
+            count = 0
+            for j in range(n):
+                if word[j] == v[j]:
+                    count += 1
+            if count == n - 1 and word not in used_words:
+                queue.append((word, cnt + 1))
+            
         
-        
-    return count
+    return 0
